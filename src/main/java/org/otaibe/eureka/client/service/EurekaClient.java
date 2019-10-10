@@ -2,6 +2,7 @@ package org.otaibe.eureka.client.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.vertx.core.impl.VertxImpl;
+import io.vertx.ext.web.client.WebClientOptions;
 import io.vertx.reactivex.core.Vertx;
 import io.vertx.reactivex.core.buffer.Buffer;
 import io.vertx.reactivex.ext.web.client.WebClient;
@@ -26,6 +27,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import java.net.Inet4Address;
+import java.net.URI;
 import java.net.UnknownHostException;
 import java.time.Duration;
 import java.util.Map;
@@ -70,10 +72,17 @@ public class EurekaClient {
     @PostConstruct
     public void init() {
         log.info("init started");
-        this.apiPath = UriBuilder.fromUri(getEurekaDefaultZone()).path(getEurekaServerPath());
-        this.client = WebClient.create(getVertx());
+        UriBuilder path = UriBuilder.fromUri(getEurekaDefaultZone()).path(getEurekaServerPath());
+        URI build = path.build();
+        this.client = WebClient.create(getVertx(),
+                new WebClientOptions()
+                        .setDefaultHost(build.getHost())
+                        .setDefaultPort(build.getPort())
+                        .setSsl(StringUtils.startsWithIgnoreCase(build.getScheme(), "https"))
+        );
 
-        this.apiPath = UriBuilder.fromPath(getEurekaServerPath());
+        this.apiPath = path;
+
         vertxDelegate = (VertxImpl) getVertx().getDelegate();
 
         initInstanceInfo();

@@ -23,15 +23,14 @@ public class JsonConfig {
     public ObjectMapper objectMapper() {
         //log.info("producing object mapper");
         objectMapper = new ObjectMapper();
-        return objectMapper;
+        fillObjectMapper(getObjectMapper());
+        getObjectMapper().configure(SerializationFeature.INDENT_OUTPUT, true);
+        //log.info("object mapper is initialized");
+        return getObjectMapper();
     }
 
     @PostConstruct
     public void init() {
-        fillObjectMapper(getObjectMapper());
-        //log.info("object mapper is initialized");
-        getObjectMapper().configure(SerializationFeature.INDENT_OUTPUT, true);
-
         fillObjectMapper(Json.mapper);
         fillObjectMapper(Json.prettyMapper);
     }
