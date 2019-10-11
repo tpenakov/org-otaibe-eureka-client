@@ -5,15 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.otaibe.eureka.client</groupId>
     <artifactId>org-otaibe-eureka-client</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>00.00.01-SNAPSHOT</version>
     <properties>
+        <quarkus.version>0.22.0</quarkus.version>
+        <vertx.version>3.8.2</vertx.version>
         <surefire-plugin.version>2.22.0</surefire-plugin.version>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
-        <quarkus.version>0.22.0</quarkus.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <vertx.version>3.8.0</vertx.version>
     </properties>
 
     <dependencyManagement>
@@ -81,11 +81,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.8.1</version>
         </dependency>
-        <dependency>
-            <groupId>commons-configuration</groupId>
-            <artifactId>commons-configuration</artifactId>
-            <version>1.8</version>
-        </dependency>
 
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -146,6 +141,8 @@
                 </executions>
                 <configuration>
                     <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <generateGitPropertiesFilename>${project.build.outputDirectory}/META-INF/resources/git.properties</generateGitPropertiesFilename>
+                    <format>json</format>
                     <includeOnlyProperties>
                         <includeOnlyProperty>^git.commit.id$</includeOnlyProperty>
                         <includeOnlyProperty>^git.commit.time$</includeOnlyProperty>

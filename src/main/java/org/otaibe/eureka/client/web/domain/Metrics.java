@@ -1,11 +1,13 @@
 package org.otaibe.eureka.client.web.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@RegisterForReflection
 public class Metrics {
     @JsonProperty("mem")
     Long memory;
