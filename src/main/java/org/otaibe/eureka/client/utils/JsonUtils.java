@@ -32,7 +32,7 @@ public class JsonUtils {
             Map value = objectMapper.readValue(objectMapper.writeValueAsBytes(input), Map.class);
             return value;
         } catch (IOException e) {
-            log.error("uanble to transform to Map", e);
+            log.error("unable to transform to Map", e);
             throw new RuntimeException(e);
         }
     }
