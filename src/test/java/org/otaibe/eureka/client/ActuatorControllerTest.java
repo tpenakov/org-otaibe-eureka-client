@@ -4,10 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.quarkus.test.junit.QuarkusTest;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.otaibe.eureka.client.utils.ControllerUtils;
 import org.otaibe.eureka.client.utils.JsonUtils;
 import org.otaibe.eureka.client.web.controller.ActuatorController;
 import org.otaibe.eureka.client.web.domain.Info;
@@ -24,18 +23,17 @@ import static org.hamcrest.CoreMatchers.containsString;
 @Slf4j
 public class ActuatorControllerTest {
 
-    @ConfigProperty(name = "quarkus.servlet.context-path", defaultValue = StringUtils.EMPTY)
-    String contextPath;
-
     @Inject
     ObjectMapper objectMapper;
     @Inject
     JsonUtils jsonUtils;
+    @Inject
+    ControllerUtils controllerUtils;
 
     @Test
     public void testHealthEndpoint() {
         given()
-                .when().get(getContextPath() + "/health")
+                .when().get(getControllerUtils().getBasePath() + "/health")
                 .then()
                 .statusCode(200)
                 .body(containsString("UP"));
@@ -44,7 +42,7 @@ public class ActuatorControllerTest {
     @Test
     public void testInfoEndpoint() {
         String responseString = given()
-                .when().get(getContextPath() + ActuatorController.INFO)
+                .when().get(getControllerUtils().getBasePath() + ActuatorController.INFO)
                 .then()
                 .statusCode(200)
                 .extract()
@@ -61,7 +59,7 @@ public class ActuatorControllerTest {
     @Test
     public void testMetricsEndpoint() {
         String responseString = given()
-                .when().get(getContextPath() + ActuatorController.METRICS)
+                .when().get(getControllerUtils().getBasePath() + ActuatorController.METRICS)
                 .then()
                 .statusCode(200)
                 .extract()
