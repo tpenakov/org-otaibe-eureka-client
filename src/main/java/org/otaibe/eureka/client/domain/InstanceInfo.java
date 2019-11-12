@@ -20,6 +20,8 @@ import java.text.MessageFormat;
 @ToString
 public class InstanceInfo {
 
+    public static final String UP = "UP";
+
     public static final String INSTANCE_XML_TEMPLATE = "<instance>\n" +
             "      <instanceId>{0}:{1}:{2,number,#}</instanceId>\n" +
             "      <hostName>{3}</hostName>\n" +
