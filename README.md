@@ -6,7 +6,7 @@ Bare minimum Eureka client functionality in order to work with Netflix Eureka Se
 The Quarkus Based Eureka Client is rewritten as a library in [otaibe-commons-quarkus project](https://github.com/tpenakov/otaibe-commons-quarkus) .
 In that way is easier to plug it in the existing project. Some basic Actuators endpoints are also added there. 
 
-Nevertheless I will continue to support this project too!
+Nevertheless I will continue to support and this project too!
 
 ## Some tips
 * Use ``org.otaibe.eureka.client.service.EurekaClient.getNextServer`` to retrieve the next registered instance.
