@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.otaibe.eureka.client</groupId>
     <artifactId>org-otaibe-eureka-client</artifactId>
-    <version>00.00.01-SNAPSHOT</version>
+    <version>00.00.02-SNAPSHOT</version>
     <properties>
         <!--<otaibe-commons-quarkus.groupId>org.otaibe.commons.quarkus</otaibe-commons-quarkus.groupId>-->
         <otaibe-commons-quarkus.groupId>com.github.tpenakov.otaibe-commons-quarkus</otaibe-commons-quarkus.groupId>
