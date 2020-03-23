@@ -21,9 +21,9 @@ public class TestControllerTest {
     public void testHelloEndpoint() {
         given()
           .when().get(getControllerUtils().getBasePath() + "/test")
-          .then()
-             .statusCode(200)
-             .body(is("hello"));
+                .then()
+                .statusCode(200)
+                .body(is("hello"));
     }
 
 }

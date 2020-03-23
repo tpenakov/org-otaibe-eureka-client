@@ -1,11 +1,9 @@
 package org.otaibe.eureka.client.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.quarkus.runtime.StartupEvent;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.otaibe.eureka.client.service.EurekaClient;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
@@ -21,11 +19,7 @@ import javax.inject.Inject;
 @Slf4j
 public class EagerBeansLoader {
     @Inject
-    JsonConfig jsonConfig;
-    @Inject
-    EurekaClient eurekaClient;
-    @Inject
-    ObjectMapper objectMapper;
+    org.otaibe.commons.quarkus.eureka.client.service.EurekaClient eurekaClient;
 
     public void init(@Observes StartupEvent event) {
         log.info("init start");

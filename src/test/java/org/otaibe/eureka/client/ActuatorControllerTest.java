@@ -6,9 +6,9 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.otaibe.commons.quarkus.actuator.web.controller.ActuatorController;
+import org.otaibe.commons.quarkus.core.utils.JsonUtils;
 import org.otaibe.eureka.client.utils.ControllerUtils;
-import org.otaibe.eureka.client.utils.JsonUtils;
-import org.otaibe.eureka.client.web.controller.ActuatorController;
 import org.otaibe.eureka.client.web.domain.Info;
 import org.otaibe.eureka.client.web.domain.Metrics;
 

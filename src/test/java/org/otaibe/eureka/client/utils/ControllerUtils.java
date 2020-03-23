@@ -13,15 +13,13 @@ import java.util.Optional;
 @Getter
 public class ControllerUtils {
 
-    @ConfigProperty(name = "quarkus.servlet.context-path", defaultValue = StringUtils.EMPTY)
-    String contextPath;
     @ConfigProperty(name = "service.http.host")
     Optional<URI> host;
 
     public String getBasePath() {
         return getHost()
-                .map(uri -> UriBuilder.fromUri(uri).path(getContextPath()))
-                .orElseGet(() -> UriBuilder.fromPath(getContextPath()))
+                .map(uri -> UriBuilder.fromUri(uri))
+                .orElseGet(() -> UriBuilder.fromPath(StringUtils.EMPTY))
                 .toTemplate();
     }
 
